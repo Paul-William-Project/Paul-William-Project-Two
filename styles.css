@@ -62,3 +62,22 @@ main form {
   height: 40vh;
   background-color: aquamarine;
 }
+
+/* form flexing */
+
+.formParent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 1rem);
+  padding: 0.5rem;
+}
+
+form button {
+  margin: 0 auto;
+}
