@@ -1,0 +1,13 @@
+1. landing page with a selection of random games on sale by default + nav bar to search for a specific game
+
+2. user searches a game, this will utilize game lookup endpoint to find the specified query 
+
+3. displays result: game + current and original prices + review scores + links to buy searched game
+
+4. a form that allows users to specify a list of games to be displayed from the CheapShark API
+
+5. form lets the user filter the results by review score, price, and if they are from a specific store
+
+6. after inputs are given, script will run through CheapShark games array in a forEach loop, adding games which fall in with the specified filters
+
+7. results display below the form in an <ol>, with each <li> displaying a result similar to the search result above
