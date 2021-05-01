@@ -2,86 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Is It On Sale? App</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jura&family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is It On Sale? App</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jura&family=Krona+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <nav>
-        <form action="POST" class="search">
-            <label for="search" class="srOnly">Search for a game here:</label>
-            <input type="text" name="search" id="search" placeholder="Search for a game here">
-            <button>Search For Game</button>
-        </form>
-    </nav>
-    <header>
-        <div class="wrapper">
+  <nav>
+    <form action="POST" class="search">
+      <label for="search" class="srOnly">Search for a game here:</label>
+      <input type="text" name="search" id="search" placeholder="Search for a game here">
+      <button>Search For Game</button>
+    </form>
+  </nav>
+  <header>
+    <div class="wrapper">
 
-            <h1>Is It On Sale?</h1>
+      <h1>Is It On Sale?</h1>
+    </div>
+  </header>
+
+  <main>
+    <form action="POST">
+      <div class="wrapper formParent">
+        <div class="formFlex">
+          <h2>Sort Results By:</h2>
+          <label for="metacritic">Minimum Metacritic Score (0-100):</label>
+          <input type="number" name="metacritic" id="metacritic" min=0 max=100>
+
+          <label for="steamScore">Steam Review Score:</label>
+          <select name="steamScore" id="steamScore">
+            <option value="" disabled>Select Rating</option>
+            <option value="allScores">All Review Scores</option>
+            <option value="overwhelminglyP">Overwhelmingly Positive</option>
+            <option value="veryP">Very Positive</option>
+            <option value="P">Positive</option>
+            <option value="mostlyP">Mostly Positive</option>
+            <option value="mixed">Mixed</option>
+            <option value="mostlyN">Mostly Negative</option>
+            <option value="N">Negative</option>
+            <option value="veryN">Very Negative</option>
+            <option value="overwhelminglyN">Overwhelmingly Negative</option>
+          </select>
+          <!-- Select a store -->
+          <label for="gameStore">Game Store:</label>
+          <select name="gameStore" id="gameStore">
+            <option value="" disabled>Select a Store</option>
+            <option value="allStores">View All Stores</option>
+          </select>
         </div>
-    </header>
 
-    <main>
-        <form action="POST">
-            <div class="wrapper">
-                <div class="formFlex">
-                    <h2>Sort Results By:</h2>
-                    <label for="metacritic">Metacritic Score</label>
-                    <input type="range" name="metacritic" id="metacritic">
+        <div class="formFlex">
+          <div class="checkbox">
+            <label for="sale">Sales Only:</label>
+            <input type="checkbox" name="sale" id="sale">
+          </div>
+          <legend>Sort Price By:</legend>
+          <fieldset>
+            <input type="radio" id="highest" name="priceSort" value="highest" checked>
+            <label for="highest">Highest to Lowest</label>
+            <input type="radio" id="lowest" name="priceSort" value="lowest">
+            <label for="lowest">Lowest to Highest</label>
+          </fieldset>
+        </div>
+        <button>Search Results</button>
+      </div>
+    </form>
 
-                    <label for="steamScore">Steam Review Score:</label>
-                    <select name="steamScore" id="steamScore">
-                        <option value="" disabled>Select Rating</option>
-                        <option value="allScores">All Review Scores</option>
-                        <option value="overwhelminglyP">Overwhelmingly Positive</option>
-                        <option value="veryP">Very Positive</option>
-                        <option value="P">Positive</option>
-                        <option value="mostlyP">Mostly Positive</option>
-                        <option value="mixed">Mixed</option>
-                        <option value="mostlyN">Mostly Negative</option>
-                        <option value="N">Negative</option>
-                        <option value="veryN">Very Negative</option>
-                        <option value="overwhelminglyN">Overwhelmingly Negative</option>
-                    </select>
-
-                    <!-- Select a store -->
-                    <label for="gameStore">Game Store:</label>
-                    <select name="gameStore" id="gameStore">
-                        <option value="" disabled>Select a Store</option>
-                        <option value="allStores">View All Stores</option>
-                    </select>
-                </div>
-                <div class="formFlex">
-                    <label for="sale">Sales Only</label>
-                    <input type="checkbox" name="sale" id="sale">
-
-                    <legend>Sort Price By:</legend>
-                    <fieldset>
-                        <input type="radio" id="highest" name="priceSort" value="highest" checked>
-                        <label for="highest">Highest to Lowest</label>
-                        <input type="radio" id="lowest" name="priceSort" value="lowest">
-                        <label for="lowest">Lowest to Highest</label>
-                    </fieldset>
-                </div>
-            </div>
-        </form>
-
-        <section>
-            <ol class="games" id="games"></ol>
-        </section>
-    </main>
+    <section>
+      <ol class="games" id="games"></ol>
+    </section>
+  </main>
 
 
 
-    <footer>
-        <div class="wrapper"></div>
-    </footer>
-    <script src="script.js"></script>
+  <footer>
+    <div class="wrapper"></div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 
 </html>
