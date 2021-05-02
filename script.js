@@ -13,7 +13,6 @@ priceApp.getStoreArray = () => {
   }).then(function (jsonResponse) {
     // this returns the array for stores
     priceApp.displayArray(jsonResponse);
-    console.log(jsonResponse);
   })
 }
 
@@ -21,34 +20,28 @@ priceApp.getStoreArray = () => {
 priceApp.displayArray = (storeArray) => {
   // variable for the store array, forEach loops feed into it
   let storeNames = [];
+  // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
+  let storeOptions = document.getElementById('gameStore');
+
   const storeItems = document.getElementById('gameStore');
 
   // creating the array for store names and sorting by alphabetical order
   storeArray.forEach((storeID) => {
     selectStore = storeID.storeName;
     selectID = storeID.storeID;
-    console.log(selectStore);
     storeNames.push(selectStore)
     storeNames.sort();
 
     let newOption = document.createElement('option');
     newOption.innerHTML = selectStore;
     newOption.value = selectID;
-    // newOption.value = priceapp.displayArray
+
     storeItems.append(newOption);
   });
 
-  console.log(storeNames);
-
-  // // appends the sorted store name array into the option
-  // storeNames.forEach((sortName) => {
-  //   let newOption = document.createElement('option');
-  //   newOption.innerHTML = sortName;
-  //   // newOption.value = priceapp.displayArray
-  //   storeItems.append(newOption);
-  // })
-
   // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
+
+  // Probably need to name space this - Remind Paul.
   function sortSelect(selElem) {
     let tmpAry = [];
     for (let i = 0; i < selElem.options.length; i++) {
@@ -56,7 +49,6 @@ priceApp.displayArray = (storeArray) => {
       tmpAry[i][0] = selElem.options[i].text;
       tmpAry[i][1] = selElem.options[i].value;
     }
-    console.log(tmpAry);
     tmpAry.sort();
     for (var i = 0; i < tmpAry.length; i++) {
       var op = new Option(tmpAry[i][0], tmpAry[i][1]);
@@ -69,8 +61,6 @@ priceApp.displayArray = (storeArray) => {
 
 }
 
-// https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
-let storeOptions = document.getElementById('gameStore');
 
 
 
@@ -86,10 +76,8 @@ document.addEventListener("submit", function (event) {
   let isChecked
   if (saleCheck.checked === true) {
     isChecked = "1"
-    console.log(isChecked)
   } else {
     isChecked = "0"
-    console.log(isChecked)
   }
 
 
@@ -99,7 +87,11 @@ document.addEventListener("submit", function (event) {
 
   const storeSelector = document.getElementById('gameStore')
   const storeValue = storeSelector.value
-  console.log(storeValue);
+  console.log(storeValue)
+
+  const reviewSelector = document.getElementById('steamScore')
+  const reviewValue = reviewSelector.value
+  console.log('Steam Review Score:', reviewValue)
 
 
   // Create variable to hold value for url parameter
@@ -115,14 +107,28 @@ document.addEventListener("submit", function (event) {
   const metacriticValue = metacritic.value;
 
   // Add results to new URL
-  url.search = new URLSearchParams({
-    onSale: isChecked,
-    sortBy: "Price",
-    desc: priceSort,
-    metacritic: metacriticValue
-  });
-  console.log(url)
+  if (storeValue === 'allStores') {
 
+    url.search = new URLSearchParams({
+      onSale: isChecked,
+      sortBy: "Price",
+      desc: priceSort,
+      // storeID: storeValue,
+      metacritic: metacriticValue,
+      steamRating: reviewValue,
+
+    });
+    console.log(url)
+  } else {
+    url.search = new URLSearchParams({
+      onSale: isChecked,
+      sortBy: "Price",
+      desc: priceSort,
+      storeID: storeValue,
+      metacritic: metacriticValue,
+      steamRating: reviewValue,
+    });
+  }
   fetch(url).then(function (response) {
     console.log(response.json());
   })
