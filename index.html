@@ -34,17 +34,17 @@
           <label for="metacritic">Minimum Metacritic Score (0-100):</label>
           <input type="number" name="metacritic" id="metacritic" min=0 max=100>
 
-          <label for="steamScore">Steam Review Score:</label>
+          <label for="steamScore">Minimum Steam Review Score:</label>
           <select name="steamScore" id="steamScore">
             <option value="" disabled>Select Rating</option>
-            <option value="">All Review Scores</option>
-            <option value="">Overwhelmingly Positive</option>
-            <option value="">Very Positive</option>
-            <option value="">Mostly Positive</option>
-            <option value="">Mixed</option>
-            <option value="">Mostly Negative</option>
-            <option value="">Very Negative</option>
-            <option value="">Overwhelmingly Negative</option>
+            <option value="0">-All Review Scores-</option>
+            <option value="95">Overwhelmingly Positive</option>
+            <option value="80">Very Positive</option>
+            <option value="70">Mostly Positive</option>
+            <option value="40">Mixed</option>
+            <option value="20">Mostly Negative</option>
+            <option value="10">Very Negative</option>
+            <option value="0">Overwhelmingly Negative</option>
           </select>
           <!-- Select a store -->
           <label for="gameStore">Game Store:</label>
