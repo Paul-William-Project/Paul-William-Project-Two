@@ -13,6 +13,7 @@ priceApp.getStoreArray = () => {
   }).then(function (jsonResponse) {
     // this returns the array for stores
     priceApp.displayArray(jsonResponse);
+    console.log(jsonResponse);
   })
 }
 
@@ -24,18 +25,55 @@ priceApp.displayArray = (storeArray) => {
 
   // creating the array for store names and sorting by alphabetical order
   storeArray.forEach((storeID) => {
-    storeNames.push(storeID.storeName)
+    selectStore = storeID.storeName;
+    selectID = storeID.storeID;
+    console.log(selectStore);
+    storeNames.push(selectStore)
     storeNames.sort();
 
+    let newOption = document.createElement('option');
+    newOption.innerHTML = selectStore;
+    newOption.value = selectID;
+    // newOption.value = priceapp.displayArray
+    storeItems.append(newOption);
   });
 
-  // appends the sorted store name array into the option
-  storeNames.forEach((sortName) => {
-    let newOption = document.createElement('option');
-    newOption.innerHTML = sortName;
-    storeItems.append(newOption);
-  })
+  console.log(storeNames);
+
+  // // appends the sorted store name array into the option
+  // storeNames.forEach((sortName) => {
+  //   let newOption = document.createElement('option');
+  //   newOption.innerHTML = sortName;
+  //   // newOption.value = priceapp.displayArray
+  //   storeItems.append(newOption);
+  // })
+
+  // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
+  function sortSelect(selElem) {
+    let tmpAry = [];
+    for (let i = 0; i < selElem.options.length; i++) {
+      tmpAry[i] = [];
+      tmpAry[i][0] = selElem.options[i].text;
+      tmpAry[i][1] = selElem.options[i].value;
+    }
+    console.log(tmpAry);
+    tmpAry.sort();
+    for (var i = 0; i < tmpAry.length; i++) {
+      var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+      selElem.options[i] = op;
+    }
+    return;
+  }
+
+  sortSelect(storeOptions);
+
 }
+
+// https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
+let storeOptions = document.getElementById('gameStore');
+
+
+
 
 // eventlistener for submit
 document.addEventListener("submit", function (event) {
@@ -58,6 +96,11 @@ document.addEventListener("submit", function (event) {
   // Event listener checks for if radio button is (Highest to Lowest- Lowest to highest)
   const radioSelector = document.querySelector('input[type="radio"]:checked')
   const radioValue = radioSelector.value
+
+  const storeSelector = document.getElementById('gameStore')
+  const storeValue = storeSelector.value
+  console.log(storeValue);
+
 
   // Create variable to hold value for url parameter
   let priceSort = ""
@@ -86,8 +129,6 @@ document.addEventListener("submit", function (event) {
   // .then(function (returned) {
   //     console.log(returned);
   // })
-
-
 
 })
 
