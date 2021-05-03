@@ -16,6 +16,14 @@ priceApp.getStoreArray = () => {
   })
 }
 
+priceApp.newResult = () => {
+  fetch(url).then(function (response) {
+    return response.json()
+  }).then(function (arrayReturn) {
+    priceApp.resultsArray(arrayReturn)
+  })
+}
+
 // function to append store name alphabetically to options
 priceApp.displayArray = (storeArray) => {
   // variable for the store array, forEach loops feed into it
@@ -42,7 +50,8 @@ priceApp.displayArray = (storeArray) => {
   // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
 
   // Probably need to name space this - Remind Paul.
-  function sortSelect(selElem) {
+  // function sortSelect(selElem) {
+  priceApp.sortSelect = (selElem) => {
     let tmpAry = [];
     for (let i = 0; i < selElem.options.length; i++) {
       tmpAry[i] = [];
@@ -57,7 +66,7 @@ priceApp.displayArray = (storeArray) => {
     return;
   }
 
-  sortSelect(storeOptions);
+  priceApp.sortSelect(storeOptions);
 
 }
 
@@ -87,7 +96,6 @@ document.addEventListener("submit", function (event) {
 
   const storeSelector = document.getElementById('gameStore')
   const storeValue = storeSelector.value
-  console.log(storeValue)
 
   const reviewSelector = document.getElementById('steamScore')
   const reviewValue = reviewSelector.value
@@ -129,17 +137,45 @@ document.addEventListener("submit", function (event) {
       steamRating: reviewValue,
     });
   }
-  fetch(url).then(function (response) {
-    console.log(response.json());
-  })
-  // .then(function (returned) {
-  //     console.log(returned);
-  // })
+
+
+    // 
+    priceApp.resultsArray = (gamesArray) => {
+      gamesArray.forEach((game) => {
+        // Add The following to each <li>
+        // Game Title
+        // Meta Score
+        // Steam Score
+        // Original Price
+        // Sale Price
+        // Link to purchase through Shark API
+        // The proccess to append Li's to the ol
+        gameTitle = game.title
+        metaScore = game.metacriticScore
+        steamScore = game.steamRatingPercent
+        originalPrice = game.normalPrice
+        salePrice = game.salePrice
+        linkToPurchase = `https://www.cheapshark.com/redirect?dealID=${game.dealID}`
+
+        const olAppend = document.querySelector('ol')
+        const liCreate = document.createElement('li')
+        liCreate.classList.add('games');
+        liCreate.innerHTML = 
+        
+        olAppend.appendChild(liCreate);
+      })
+
+
+
+  }
+
+
 
 })
 
 priceApp.init = () => {
   priceApp.getStoreArray();
+  priceApp.newResult();
 };
 
 priceApp.init();
