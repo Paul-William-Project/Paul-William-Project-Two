@@ -85,3 +85,15 @@ form button {
 .hide {
   visibility: hidden;
 }
+
+/* Styling for Games Appended */
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.games {
+  background-color: rgb(94, 91, 86);
+  height: 40vh;
+  color: #FFF;
+}
