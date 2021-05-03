@@ -16,14 +16,6 @@ priceApp.getStoreArray = () => {
   })
 };
 
-// priceApp.newResult = () => {
-//   fetch(url).then(function (response) {
-//     return response.json();
-//   }).then(function (arrayReturn) {
-//     priceApp.resultsArray(arrayReturn);
-//   })
-// }
-
 // function to append store name alphabetically to options
 priceApp.displayArray = (storeArray) => {
   // variable for the store array, forEach loops feed into it
@@ -48,20 +40,18 @@ priceApp.displayArray = (storeArray) => {
   });
 
   // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
-
-  // Probably need to name space this - Remind Paul.
   // function sortSelect(selElem) {
-  priceApp.sortSelect = (selElem) => {
+  priceApp.sortSelect = (storeSelect) => {
     let tmpAry = [];
-    for (let i = 0; i < selElem.options.length; i++) {
+    for (let i = 0; i < storeSelect.options.length; i++) {
       tmpAry[i] = [];
-      tmpAry[i][0] = selElem.options[i].text;
-      tmpAry[i][1] = selElem.options[i].value;
+      tmpAry[i][0] = storeSelect.options[i].text;
+      tmpAry[i][1] = storeSelect.options[i].value;
     }
     tmpAry.sort();
     for (var i = 0; i < tmpAry.length; i++) {
       var op = new Option(tmpAry[i][0], tmpAry[i][1]);
-      selElem.options[i] = op;
+      storeSelect.options[i] = op;
     }
     return;
   }
@@ -169,18 +159,20 @@ document.addEventListener("submit", function (event) {
     const liCreate = document.createElement('li');
     liCreate.classList.add('games');
     liCreate.innerHTML=`
+    <div class="wrapper flexParent">
     <div class="gameImg">
       <img src="${gameImg}" alt="the game ${gameTitle}">
     </div>
-    <div>
+    <div class="flexChild">
       <h3>${gameTitle}</h3>
       <p>Metacritic Rating: ${metaScore}</p>
-      <p><span>Original Price<span>: ${originalPrice}</p>
-      <p>Purchase Here: <a>${linkToPurchase}</a></p>
-    </div
-    <div>
       <p>Steam Rating: ${steamScore}</p>
+      <p><a href="${linkToPurchase}">Purchase Here</a></p>
+      </div
+      <div>
+      <p>Original Price: <span class="strikethrough">${originalPrice}</span></p>
       <p>Current Price: ${salePrice}</p>
+    </div>
     </div>`
 
     olAppend.appendChild(liCreate);

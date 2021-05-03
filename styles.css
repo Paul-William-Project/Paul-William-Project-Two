@@ -20,6 +20,7 @@ html {
 }
 
 body {
+  color: #FFF;
   font-size: 2rem;
   font-family: 'Jura', serif;
 }
@@ -37,12 +38,24 @@ h2 {
   padding-top: 2rem;
 }
 
+h3 {
+  font-size: 2rem;
+  font-family: 'Krona One', sans-serif;
+  margin: 0;
+  padding-top: 2rem;
+}
+
 nav {
   display: flex;
   align-items: center;  
   justify-content: flex-end;
   height: 5vh;
-  background-color: #BADA55;
+  background-color: #111111;
+  border-bottom: 2px solid #000;
+}
+
+div.checkbox {
+  margin-bottom: 2.6rem;
 }
 
 .search button {
@@ -54,13 +67,15 @@ header {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 55vh;
-  background-color: #ff0;
+  height: 538px;
+  background-color: #333333;
+  border-bottom: 2px solid #000;
 }
 
 main form {
-  height: 40vh;
-  background-color: aquamarine;
+  height: 220px;
+  background-color: #555555;
+  border-bottom: 1px solid #000;
 }
 
 /* form flexing */
@@ -68,18 +83,24 @@ main form {
 .formParent {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .formFlex {
   display: flex;
   flex-direction: column;
-  width: calc(50% - 1rem);
-  padding: 0.5rem;
+  width: calc(50% - 25rem);
+  padding-top: 2rem;
+  padding-left: 15px;
 }
 
 form button {
-  margin: 0 auto;
+  margin: 5rem auto;
+}
+
+fieldset {
+  padding: 0;
+  border: none;
+  flex-direction: column;
 }
 
 .hide {
@@ -92,8 +113,69 @@ ol {
   padding: 0;
   margin: 0;
 }
+
+li:nth-child(odd) {
+  background-color: #777777;
+}
+
 .games {
-  background-color: rgb(94, 91, 86);
-  height: 40vh;
+  background-color: #999999;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: max-content;
   color: #FFF;
+}
+
+.flexParent {
+  display: flex;
+}
+
+.flexChild {
+  width: 52.5rem;
+}
+
+.gameImg {
+  width: 30rem;
+  padding: 2rem 0 2rem 2rem;
+  margin-right: 2rem;
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
+
+p:nth-last-of-type(1) {
+ margin-bottom: 0;
+ padding-bottom: 2rem;
+ font-weight: 600;
+}
+
+li a {
+  background-color: royalblue;
+  color: #FFF;
+  padding: 0.7rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+}
+
+/* https://stackoverflow.com/questions/14593415/how-to-strike-through-obliquely-with-css  but we understand the code :)*/
+
+.strikethrough {
+  position: relative;
+}
+
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 2.5px solid red;
+
+  -webkit-transform:rotate(-20deg);
+  -moz-transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg);
+  -o-transform:rotate(-20deg);
+  transform:rotate(-20deg);
 }
