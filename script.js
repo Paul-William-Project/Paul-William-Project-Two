@@ -14,15 +14,15 @@ priceApp.getStoreArray = () => {
     // this returns the array for stores
     priceApp.displayArray(jsonResponse);
   })
-}
+};
 
-priceApp.newResult = () => {
-  fetch(url).then(function (response) {
-    return response.json()
-  }).then(function (arrayReturn) {
-    priceApp.resultsArray(arrayReturn)
-  })
-}
+// priceApp.newResult = () => {
+//   fetch(url).then(function (response) {
+//     return response.json();
+//   }).then(function (arrayReturn) {
+//     priceApp.resultsArray(arrayReturn);
+//   })
+// }
 
 // function to append store name alphabetically to options
 priceApp.displayArray = (storeArray) => {
@@ -76,10 +76,14 @@ priceApp.displayArray = (storeArray) => {
 
 // eventlistener for submit
 document.addEventListener("submit", function (event) {
+  const olAppend = document.querySelector('ol');
+
+  // clears the OL every time the form is submitted to display the new results
+  olAppend.innerHTML = "";
+
   event.preventDefault();
 
   const saleCheck = document.getElementById('sale')
-
 
   // Create variable to hold value for url parameter
   let isChecked
@@ -88,7 +92,6 @@ document.addEventListener("submit", function (event) {
   } else {
     isChecked = "0"
   }
-
 
   // Event listener checks for if radio button is (Highest to Lowest- Lowest to highest)
   const radioSelector = document.querySelector('input[type="radio"]:checked')
@@ -99,8 +102,6 @@ document.addEventListener("submit", function (event) {
 
   const reviewSelector = document.getElementById('steamScore')
   const reviewValue = reviewSelector.value
-  console.log('Steam Review Score:', reviewValue)
-
 
   // Create variable to hold value for url parameter
   let priceSort = ""
@@ -136,50 +137,62 @@ document.addEventListener("submit", function (event) {
       metacritic: metacriticValue,
       steamRating: reviewValue,
     });
+  };
+
+  priceApp.newResult = () => {
+    fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (arrayReturn) {
+      priceApp.resultsArray(arrayReturn);
+    })
   }
 
+  priceApp.newResult();
 
-    // 
-    priceApp.resultsArray = (gamesArray) => {
-      gamesArray.forEach((game) => {
-        // Add The following to each <li>
-        // Game Title
-        // Meta Score
-        // Steam Score
-        // Original Price
-        // Sale Price
-        // Link to purchase through Shark API
-        // The proccess to append Li's to the ol
-        gameTitle = game.title
-        metaScore = game.metacriticScore
-        steamScore = game.steamRatingPercent
-        originalPrice = game.normalPrice
-        salePrice = game.salePrice
-        linkToPurchase = `https://www.cheapshark.com/redirect?dealID=${game.dealID}`
+  priceApp.resultsArray = (gamesArray) => {
+  gamesArray.forEach((game) => {
+    // Add The following to each <li>
+    // Game Title
+    // Meta Score
+    // Steam Score
+    // Original Price
+    // Sale Price
+    // Link to purchase through Shark API
+    // The proccess to append Li's to the ol
+    gameTitle = game.title;
+    metaScore = game.metacriticScore;
+    steamScore = game.steamRatingPercent;
+    originalPrice = game.normalPrice;
+    salePrice = game.salePrice;
+    linkToPurchase = `https://www.cheapshark.com/redirect?dealID=${game.dealID}`;
+    gameImg = game.thumb;
+    const liCreate = document.createElement('li');
+    liCreate.classList.add('games');
+    liCreate.innerHTML=`
+    <div class="gameImg">
+      <img src="${gameImg}" alt="the game ${gameTitle}">
+    </div>
+    <div>
+      <h3>${gameTitle}</h3>
+      <p>Metacritic Rating: ${metaScore}</p>
+      <p><span>Original Price<span>: ${originalPrice}</p>
+      <p>Purchase Here: <a>${linkToPurchase}</a></p>
+    </div
+    <div>
+      <p>Steam Rating: ${steamScore}</p>
+      <p>Current Price: ${salePrice}</p>
+    </div>`
 
-        const olAppend = document.querySelector('ol')
-        const liCreate = document.createElement('li')
-        liCreate.classList.add('games');
-        liCreate.innerHTML = 
-        
-        olAppend.appendChild(liCreate);
-      })
-
-
-
+    olAppend.appendChild(liCreate);
+  });
   }
-
-
-
 })
 
 priceApp.init = () => {
   priceApp.getStoreArray();
-  priceApp.newResult();
 };
 
 priceApp.init();
-
 // Create a variable to hold parameter of url
 
 
