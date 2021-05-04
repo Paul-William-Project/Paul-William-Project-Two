@@ -12,9 +12,10 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 html {
   font-size: 62.5%;
 }
+
 /* wrapper */
 .wrapper {
-  max-width: 1300px;
+  max-width: 85%;
   width: 85%;
   margin: 0 auto;
 }
@@ -23,6 +24,7 @@ body {
   color: #FFF;
   font-size: 2rem;
   font-family: 'Jura', serif;
+  background-color: #999999;
 }
 
 h1 {
@@ -49,6 +51,7 @@ nav {
   display: flex;
   align-items: center;  
   justify-content: flex-end;
+  min-height: 3.5rem;
   height: 5vh;
   background-color: #111111;
   border-bottom: 2px solid #000;
@@ -67,18 +70,59 @@ header {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 538px;
+
+  /* ensuring initial app fits screen */
+  min-height: 538px;
+  height: 65vh;
+
+
   background-color: #333333;
   border-bottom: 2px solid #000;
 }
 
 main form {
-  height: 220px;
+  min-height: 220px;
+  height: 30vh;
   background-color: #555555;
   border-bottom: 1px solid #000;
 }
 
 /* form flexing */
+main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main form select,
+main form input {
+  border-radius: 2rem;
+  background-color: rgb(224, 224, 224);
+  border: solid 0.2rem #111;
+}
+
+main form input {
+  padding-left: 1rem;
+}
+
+main form input::-webkit-outer-spin-button,
+main form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+main form input[type=number] {
+  -moz-appearance: textfield;
+}
+
+main form select {
+  padding-left: 0.5rem;
+}
+
+.formFlexOne label {
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
 
 .formParent {
   display: flex;
@@ -95,6 +139,23 @@ main form {
 
 form button {
   margin: 5rem auto;
+
+}
+
+main form button {
+  background-color: royalblue;
+  border-radius: 2rem;
+  color: #FFF;
+  border: solid 0.2rem transparent;
+  cursor: pointer;
+}
+
+li a:hover,
+li a:focus,
+main form button:hover,
+main form button:focus {
+  background-color: rgb(65, 140, 225);
+  border: solid 0.2rem #111;
 }
 
 fieldset {
@@ -146,9 +207,13 @@ img {
 }
 
 p:nth-last-of-type(1) {
- margin-bottom: 0;
- padding-bottom: 2rem;
- font-weight: 600;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+  font-weight: 600;
+}
+
+li p {
+  padding-right: 2rem;
 }
 
 li a {
@@ -157,6 +222,7 @@ li a {
   padding: 0.7rem 2rem;
   border-radius: 2rem;
   text-decoration: none;
+  border: 0.4rem solid transparent;
 }
 
 /* https://stackoverflow.com/questions/14593415/how-to-strike-through-obliquely-with-css  but we understand the code :)*/
