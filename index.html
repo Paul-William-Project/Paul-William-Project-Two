@@ -12,65 +12,60 @@
 </head>
 
 <body>
-  <nav>
-    <!-- <form action="POST" class="search">
-      <label for="search" class="srOnly">Search for a game here:</label>
-      <input type="text" name="search" id="search" placeholder="Search for a game here">
-      <button>Search For Game</button>
-    </form> -->
-  </nav>
   <header>
     <div class="wrapper">
 
-      <h1>Is It On Sale?</h1>
+      <h1>Bang for your buck</h1>
     </div>
   </header>
 
   <main>
     <form action="POST">
-      <div class="wrapper formParent">
+      <div class="wrapper mobileForm">
         <h2>Sort Results By:</h2>
-        <div class="formFlex formFlexOne">
-          <label for="metacritic">Minimum Metacritic Score:</label>
-          <input type="number" name="metacritic" id="metacritic" min=0 max=100 placeholder="0-100">
+        <div class="formParent">
+          <div class="formFlex formFlexOne">
+            <label for="metacritic">Minimum Metacritic Score:</label>
+            <input type="number" name="metacritic" id="metacritic" min=0 max=100 placeholder="0-100">
 
-          <label for="steamScore">Minimum Steam Review Score:</label>
-          <select name="steamScore" id="steamScore">
-            <option value="" disabled>Select Rating</option>
-            <option value="0">-All Review Scores-</option>
-            <option value="95">Overwhelmingly Positive</option>
-            <option value="80">Very Positive</option>
-            <option value="70">Mostly Positive</option>
-            <option value="40">Mixed</option>
-            <option value="20">Mostly Negative</option>
-            <option value="10">Very Negative</option>
-            <option value="0">Overwhelmingly Negative</option>
-          </select>
-          <!-- Select a store -->
-          <label for="gameStore">Game Store:</label>
-          <select name="gameStore" id="gameStore">
-            <option value="allStores">-View All Stores-</option>
-          </select>
-        </div>
-
-        <div class="formFlex">
-          <label for="search" class="searchLabel">Search for a game here:</label>
-          <input type="text" name="search" id="search" placeholder="Search for a game here">
-          <div class="checkbox">
-            <label for="sale">Sales Only:</label>
-            <input type="checkbox" name="sale" id="sale">
+            <label for="steamScore">Minimum Steam Review Score:</label>
+            <select name="steamScore" id="steamScore">
+              <option value="" disabled>Select Rating</option>
+              <option value="0">-All Review Scores-</option>
+              <option value="95">Overwhelmingly Positive</option>
+              <option value="80">Very Positive</option>
+              <option value="70">Mostly Positive</option>
+              <option value="40">Mixed</option>
+              <option value="20">Mostly Negative</option>
+              <option value="10">Very Negative</option>
+              <option value="0">Overwhelmingly Negative</option>
+            </select>
+            <!-- Select a store -->
+            <label for="gameStore">Game Store:</label>
+            <select name="gameStore" id="gameStore">
+              <option value="allStores">-View All Stores-</option>
+            </select>
           </div>
-          <legend>Sort Price By:</legend>
-          <fieldset>
-            <div>
-              <input type="radio" id="highest" name="priceSort" value="highest" checked>
-              <label for="highest">Highest to Lowest</label>
+
+          <div class="formFlex">
+            <label for="search" class="searchLabel">Search by game title:</label>
+            <input type="text" name="search" id="search" placeholder="Search for a game here">
+            <div class="checkbox">
+              <label for="sale">Sales Only:</label>
+              <input type="checkbox" name="sale" id="sale">
             </div>
-            <div>
-              <input type="radio" id="lowest" name="priceSort" value="lowest">
-              <label for="lowest">Lowest to Highest</label>
-            </div>
-          </fieldset>
+            <legend>Sort Price By:</legend>
+            <fieldset>
+              <div>
+                <input type="radio" id="highest" name="priceSort" value="highest" checked>
+                <label for="highest">Highest to Lowest</label>
+              </div>
+              <div>
+                <input type="radio" id="lowest" name="priceSort" value="lowest">
+                <label for="lowest">Lowest to Highest</label>
+              </div>
+            </fieldset>
+          </div>
         </div>
         <button>Search Results</button>
       </div>

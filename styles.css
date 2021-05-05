@@ -31,6 +31,7 @@ h1 {
   font-size: 10rem;
   font-family: 'Krona One', sans-serif;
   margin: 0%;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -47,25 +48,10 @@ h3 {
   padding-top: 2rem;
 }
 
-nav {
-  display: flex;
-  align-items: center;  
-  justify-content: flex-end;
-  min-height: 3.5rem;
-  height: 5vh;
-  background-color: #111111;
-  border-bottom: 2px solid #000;
-}
 
 div.checkbox {
-  margin-bottom: 2.6rem;
+  margin-bottom: 0.8rem;
   margin-top: 2.6rem;
-}
-
-
-
-.search button {
-  margin-right: 2rem;
 }
 
 header {
@@ -83,18 +69,16 @@ header {
   border-bottom: 2px solid #000;
 }
 
-main form {
-  min-height: 220px;
-  height: 30vh;
-  background-color: #555555;
-  border-bottom: 1px solid #000;
-}
-
 /* form flexing */
 main form {
+  min-height: 220px;
+  height: max-content;
+  background-color: #555555;
+  border-bottom: 1px solid #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 2rem;
 }
 
 main form select,
@@ -107,6 +91,10 @@ main form input {
 main form input {
   padding-left: 1rem;
 }
+
+::placeholder {
+    font-size: 1.6rem;
+  }
 
 main form input::-webkit-outer-spin-button,
 main form input::-webkit-inner-spin-button {
@@ -122,10 +110,13 @@ main form select {
   padding-left: 0.5rem;
 }
 
-.formFlexOne label,
-.searchLabel {
+
+form label,
+form legend,
+form fieldset{
   padding-bottom: 0.5rem;
   padding-left: 1rem;
+  margin: 0;
 }
 
 .formParent {
@@ -136,14 +127,17 @@ main form select {
 .formFlex {
   display: flex;
   flex-direction: column;
-  width: calc(50% - 25rem);
+  width: calc(50%);
   padding-top: 2rem;
   padding-left: 15px;
 }
 
-form button {
-  margin: 5rem auto;
+.formFlex.formFlexOne {
+padding-left: 0;
+}
 
+form button {
+  margin: 5rem;
 }
 
 main form button {
@@ -154,13 +148,6 @@ main form button {
   cursor: pointer;
 }
 
-li a:hover,
-li a:focus,
-main form button:hover,
-main form button:focus {
-  background-color: rgb(65, 140, 225);
-  border: solid 0.2rem #111;
-}
 
 fieldset {
   padding: 0;
@@ -227,6 +214,19 @@ li a {
   border-radius: 2rem;
   text-decoration: none;
   border: 0.4rem solid transparent;
+  white-space: nowrap;
+}
+
+li a:hover,
+li a:focus,
+main form button:hover,
+main form button:focus {
+  background-color: rgb(65, 140, 225);
+  border: solid 0.2rem #111;
+}
+
+.pricesFlex {
+  display: flex;
 }
 
 /* https://stackoverflow.com/questions/14593415/how-to-strike-through-obliquely-with-css  but we understand the code :)*/
@@ -248,4 +248,60 @@ li a {
   -ms-transform:rotate(-20deg);
   -o-transform:rotate(-20deg);
   transform:rotate(-20deg);
+}
+
+.mobileForm {
+    display: flex;
+    flex-direction: column;
+  }
+/* ~~MEDIA QUERIES~~ */
+
+@media (max-width: 600px) {
+  
+  .gameImg {
+    display: none;
+  }
+
+  h1 {
+    font-size: 5.9rem;
+    line-height: 9rem;
+    text-transform: uppercase;
+  }
+  
+}
+
+@media (max-width: 480px) {
+
+  .pricesFlex {
+    flex-direction: column;
+    
+  }
+
+  li p {
+    padding: 0;
+    text-align: center;
+  }
+
+
+  .formParent {
+    flex-direction: column;
+  }
+
+  .formFlex {
+    padding: 0;
+    width: 100%;
+  }
+
+  form label, form legend, form fieldset {
+    padding-top: 2rem;
+  }
+
+  .mobileForm {
+    display: flex;
+    flex-direction: column;
+}
+
+  h3 {
+    text-align: center;
+  }
 }
