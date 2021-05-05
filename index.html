@@ -13,11 +13,11 @@
 
 <body>
   <nav>
-    <form action="POST" class="search">
+    <!-- <form action="POST" class="search">
       <label for="search" class="srOnly">Search for a game here:</label>
       <input type="text" name="search" id="search" placeholder="Search for a game here">
       <button>Search For Game</button>
-    </form>
+    </form> -->
   </nav>
   <header>
     <div class="wrapper">
@@ -54,6 +54,8 @@
         </div>
 
         <div class="formFlex">
+          <label for="search" class="searchLabel">Search for a game here:</label>
+          <input type="text" name="search" id="search" placeholder="Search for a game here">
           <div class="checkbox">
             <label for="sale">Sales Only:</label>
             <input type="checkbox" name="sale" id="sale">
@@ -76,7 +78,6 @@
 
     <section>
       <ol id="games">
-
       </ol>
     </section>
 

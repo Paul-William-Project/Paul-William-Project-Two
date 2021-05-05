@@ -59,7 +59,10 @@ nav {
 
 div.checkbox {
   margin-bottom: 2.6rem;
+  margin-top: 2.6rem;
 }
+
+
 
 .search button {
   margin-right: 2rem;
@@ -119,7 +122,8 @@ main form select {
   padding-left: 0.5rem;
 }
 
-.formFlexOne label {
+.formFlexOne label,
+.searchLabel {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
 }
