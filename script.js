@@ -105,6 +105,9 @@ document.addEventListener("submit", function (event) {
   const metacritic = document.getElementById("metacritic");
   const metacriticValue = metacritic.value;
 
+  // search query testing
+  const gameQuery = document.getElementById("search").value;
+
   // Add results to new URL
   if (storeValue === 'allStores') {
 
@@ -116,8 +119,10 @@ document.addEventListener("submit", function (event) {
       metacritic: metacriticValue,
       steamRating: reviewValue,
 
+      // experimenting
+      title: gameQuery
+
     });
-    console.log(url)
   } else {
     url.search = new URLSearchParams({
       onSale: isChecked,
@@ -126,6 +131,9 @@ document.addEventListener("submit", function (event) {
       storeID: storeValue,
       metacritic: metacriticValue,
       steamRating: reviewValue,
+
+      // experimenting
+      title: gameQuery
     });
   };
 
@@ -140,25 +148,34 @@ document.addEventListener("submit", function (event) {
   priceApp.newResult();
 
   priceApp.resultsArray = (gamesArray) => {
-  gamesArray.forEach((game) => {
-    // Add The following to each <li>
-    // Game Title
-    // Meta Score
-    // Steam Score
-    // Original Price
-    // Sale Price
-    // Link to purchase through Shark API
-    // The proccess to append Li's to the ol
-    gameTitle = game.title;
-    metaScore = game.metacriticScore;
-    steamScore = game.steamRatingPercent;
-    originalPrice = game.normalPrice;
-    salePrice = game.salePrice;
-    linkToPurchase = `https://www.cheapshark.com/redirect?dealID=${game.dealID}`;
-    gameImg = game.thumb;
-    const liCreate = document.createElement('li');
-    liCreate.classList.add('games');
-    liCreate.innerHTML=`
+    console.log(gamesArray);
+
+    if (gamesArray.length === 0) {
+      const liCreate = document.createElement('li');
+      liCreate.classList.add('searchError');
+      liCreate.innerHTML = `There are 0 Results found for ${gameQuery}`;
+      olAppend.appendChild(liCreate);
+    }
+    else {
+      gamesArray.forEach((game) => {
+        // Add The following to each <li>
+        // Game Title
+        // Meta Score
+        // Steam Score
+        // Original Price
+        // Sale Price
+        // Link to purchase through Shark API
+        // The proccess to append Li's to the ol
+        gameTitle = game.title;
+        metaScore = game.metacriticScore;
+        steamScore = game.steamRatingPercent;
+        originalPrice = game.normalPrice;
+        salePrice = game.salePrice;
+        linkToPurchase = `https://www.cheapshark.com/redirect?dealID=${game.dealID}`;
+        gameImg = game.thumb;
+        const liCreate = document.createElement('li');
+        liCreate.classList.add('games');
+        liCreate.innerHTML = `
     <div class="wrapper flexParent">
     <div class="gameImg">
       <img src="${gameImg}" alt="the game ${gameTitle}">
@@ -175,9 +192,13 @@ document.addEventListener("submit", function (event) {
     </div>
     </div>`
 
-    olAppend.appendChild(liCreate);
-  });
+        olAppend.appendChild(liCreate);
+      });
+    }
+
   }
+
+  olAppend.scrollIntoView({inline: "start"});
 })
 
 priceApp.init = () => {
