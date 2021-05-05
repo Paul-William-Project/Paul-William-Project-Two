@@ -177,28 +177,29 @@ document.addEventListener("submit", function (event) {
         liCreate.classList.add('games');
         liCreate.innerHTML = `
     <div class="wrapper flexParent">
-    <div class="gameImg">
-      <img src="${gameImg}" alt="the game ${gameTitle}">
-    </div>
-    <div class="flexChild">
-      <h3>${gameTitle}</h3>
-      <p>Metacritic Rating: ${metaScore}</p>
-      <p>Steam Rating: ${steamScore}</p>
-      <p><a href="${linkToPurchase}">Purchase Here</a></p>
-      </div
-      <div>
-      <p>Original Price: <span class="strikethrough">${originalPrice}</span></p>
-      <p>Current Price: ${salePrice}</p>
-    </div>
+      <div class="gameImg">
+        <img src="${gameImg}" alt="the game ${gameTitle}">
+        </div>
+      <div class="flexChild">
+        <h3>${gameTitle}</h3>
+        <p>Metacritic Rating: ${metaScore}</p>
+        <p>Steam Rating: ${steamScore}</p>
+        <p><a href="${linkToPurchase}">Purchase Here</a></p>
+      </div>
+      <div class ="pricesFlex">
+        <p>Original Price: <span class="strikethrough">${originalPrice}</span></p>
+        <p>Current Price: ${salePrice}</p>
+      </div>
     </div>`
 
         olAppend.appendChild(liCreate);
       });
+      // Scroll results into view
+      olAppend.scrollIntoView(true);
     }
 
   }
 
-  olAppend.scrollIntoView({inline: "start"});
 })
 
 priceApp.init = () => {
