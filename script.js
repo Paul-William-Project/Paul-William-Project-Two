@@ -49,20 +49,14 @@ priceApp.displayArray = (storeArray) => {
       tmpAry[i][1] = storeSelect.options[i].value;
     }
     tmpAry.sort();
-    for (var i = 0; i < tmpAry.length; i++) {
-      var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+    for (let i = 0; i < tmpAry.length; i++) {
+      let op = new Option(tmpAry[i][0], tmpAry[i][1]);
       storeSelect.options[i] = op;
     }
     return;
   }
-
   priceApp.sortSelect(storeOptions);
-
 }
-
-
-
-
 
 // eventlistener for submit
 document.addEventListener("submit", function (event) {
@@ -148,8 +142,6 @@ document.addEventListener("submit", function (event) {
   priceApp.newResult();
 
   priceApp.resultsArray = (gamesArray) => {
-    console.log(gamesArray);
-
     if (gamesArray.length === 0) {
       const liCreate = document.createElement('li');
       liCreate.classList.add('searchError');
@@ -200,9 +192,7 @@ document.addEventListener("submit", function (event) {
       footerBackToTop.innerHTML = `<p><a href="#games">Back to the top</a></p>`
       // footerBackToTop.appendChild
     }
-
   }
-
 })
 
 priceApp.init = () => {
@@ -210,18 +200,3 @@ priceApp.init = () => {
 };
 
 priceApp.init();
-// Create a variable to hold parameter of url
-
-
-// is on sale checkbox
-
-// for sorting by price:
-// forEach loop that checks for prices and then sorts prices from highest to lowest using .sort()
-// if
-
-// store metacritic scores in a variable
-// 
-
-// steam review score
-
-// game store
