@@ -196,6 +196,9 @@ document.addEventListener("submit", function (event) {
       });
       // Scroll results into view
       olAppend.scrollIntoView(true);
+      const footerBackToTop = document.getElementById('backToTop')
+      footerBackToTop.innerHTML = `<p><a href="#games">Back to the top</a></p>`
+      // footerBackToTop.appendChild
     }
 
   }

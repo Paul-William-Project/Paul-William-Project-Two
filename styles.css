@@ -11,6 +11,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 /* wrapper */
@@ -254,6 +255,20 @@ main form button:focus {
     display: flex;
     flex-direction: column;
   }
+
+footer {
+  text-align: center;
+}
+
+footer a {
+text-decoration: none;
+color: white;
+}
+
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
 /* ~~MEDIA QUERIES~~ */
 
 @media (max-width: 600px) {
