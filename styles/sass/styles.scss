@@ -1,0 +1,219 @@
+// setup snippet
+@import 'partials/setup';
+
+// typography styling
+@import 'partials/typography';
+
+/* wrapper */
+.wrapper {
+  max-width: 85%;
+  width: 85%;
+  margin: 0 auto;
+}
+
+// header
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  /* ensuring initial app fits screen */
+  min-height: 538px;
+  height: 65vh;
+
+
+  background-color: #333333;
+  border-bottom: 2px solid #000;
+}
+
+// form styling
+main form {
+  min-height: 220px;
+  height: max-content;
+  background-color: #555555;
+  border-bottom: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+main form select,
+main form input {
+  border-radius: 2rem;
+  background-color: rgb(224, 224, 224);
+  border: solid 0.2rem #111;
+}
+
+main form input {
+  padding-left: 1rem;
+}
+
+main form input::-webkit-outer-spin-button,
+main form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+main form input[type=number] {
+  -moz-appearance: textfield;
+}
+
+main form select {
+  padding-left: 0.5rem;
+}
+
+
+form label,
+form legend,
+form fieldset{
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.formParent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: column;
+  width: calc(50%);
+  padding-top: 2rem;
+  padding-left: 15px;
+}
+
+.formFlex.formFlexOne {
+padding-left: 0;
+}
+
+form button {
+  margin: 5rem;
+}
+
+main form button {
+  background-color: royalblue;
+  border-radius: 2rem;
+  color: #FFF;
+  border: solid 0.2rem transparent;
+  cursor: pointer;
+}
+
+div.checkbox {
+  margin-bottom: 0.8rem;
+  margin-top: 2.6rem;
+}
+
+fieldset {
+  padding: 0;
+  border: none;
+  flex-direction: column;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+/* Styling for List of Games Appended */
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li:nth-child(odd) {
+  background-color: #777777;
+}
+
+.games {
+  background-color: #999999;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: max-content;
+  color: #FFF;
+}
+
+.flexParent,
+.pricesFlex {
+  display: flex;
+}
+
+.flexChild {
+  width: 52.5rem;
+}
+
+.gameImg {
+  width: 30rem;
+  padding: 2rem 0 2rem 2rem;
+  margin-right: 2rem;
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
+
+p:nth-last-of-type(1) {
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+  font-weight: 600;
+}
+
+li p {
+  padding-right: 2rem;
+}
+
+li a {
+  background-color: royalblue;
+  color: #FFF;
+  padding: 0.7rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  border: 0.4rem solid transparent;
+  white-space: nowrap;
+}
+
+li a:hover,
+li a:focus,
+main form button:hover,
+main form button:focus {
+  background-color: rgb(65, 140, 225);
+  border: solid 0.2rem #111;
+}
+
+/* https://stackoverflow.com/questions/14593415/how-to-strike-through-obliquely-with-css  but we understand the code :)*/
+
+.strikethrough {
+  position: relative;
+}
+
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 2.5px solid red;
+
+  -webkit-transform:rotate(-20deg);
+  -moz-transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg);
+  -o-transform:rotate(-20deg);
+  transform:rotate(-20deg);
+}
+
+.mobileForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+// footer styling
+footer {
+  text-align: center;
+}
+
+// media queries
+@import 'partials/mediaQueries';

@@ -1,0 +1,49 @@
+@media (max-width: 600px) {
+  
+  .gameImg {
+    display: none;
+  }
+
+  h1 {
+    font-size: 5.9rem;
+    line-height: 9rem;
+    text-transform: uppercase;
+  }
+  
+}
+
+@media (max-width: 480px) {
+
+  .pricesFlex {
+    flex-direction: column;
+    
+  }
+
+  li p {
+    padding: 0;
+    text-align: center;
+  }
+
+
+  .formParent {
+    flex-direction: column;
+  }
+
+  .formFlex {
+    padding: 0;
+    width: 100%;
+  }
+
+  form label, form legend, form fieldset {
+    padding-top: 2rem;
+  }
+
+  .mobileForm {
+    display: flex;
+    flex-direction: column;
+}
+
+  h3 {
+    text-align: center;
+  }
+}
